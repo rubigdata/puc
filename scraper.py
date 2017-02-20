@@ -14,9 +14,6 @@ class StreamListener(tweepy.StreamListener):
     def on_status(self, status):
 	global tcount
 
-        if status.retweeted:
-            return
-
         description = status.user.description
         loc = status.user.location
         text = status.text
@@ -64,6 +61,10 @@ class StreamListener(tweepy.StreamListener):
         if status_code == 420:
             #returning False in on_data disconnects the stream
             return False
+
+#
+# Setup of tweepy; assumes the correct variables have been defined in private.py
+#
 
 auth = tweepy.OAuthHandler(settings.TWITTER_APP_KEY, settings.TWITTER_APP_SECRET)
 auth.set_access_token(settings.TWITTER_KEY, settings.TWITTER_SECRET)
