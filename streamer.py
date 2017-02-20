@@ -5,6 +5,11 @@ from sqlalchemy.exc import ProgrammingError
 import json
 import sys
 
+import urllib3.contrib.pyopenssl
+urllib3.contrib.pyopenssl.inject_into_urllib3()
+
+################################ MJRTY ###################################
+
 mentions = 0
 majority = ""
 
@@ -19,6 +24,8 @@ def MJRTY(politician):
 	mentions += 1
     else:
 	mentions -= 1
+
+###########################################################################
 
 class StreamListener(tweepy.StreamListener):
 
@@ -45,11 +52,15 @@ class StreamListener(tweepy.StreamListener):
         if coords is not None:
             coords = json.dumps(coords)
 
+################################ MJRTY ###################################
+
         print text
 	tokens = map (unicode.lower, text.split())
 	for p in settings.TRACK_TERMS:
             if p in tokens:
                 MJRTY(p)
+
+###########################################################################
 
     def on_error(self, status_code):
         if status_code == 420:
