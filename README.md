@@ -2,4 +2,4 @@
 
 Pre-university college les over Big Data
 
-Ga naar [de tutorial](http://rubigdata.github.io/course/puc/tutorial.html).
+Ga naar [het college](https://rubigdata.github.io/course/puc/leerlingen.html) of [de tutorial](http://rubigdata.github.io/course/puc/tutorial.html).
